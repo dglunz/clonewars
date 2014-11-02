@@ -1,0 +1,12 @@
+body {
+  width: 100%;
+  background-color: black;
+}
+
+.header-logo {
+  text-align: center;
+}
+
+.homepage-links {
+  text-align: center;
+}

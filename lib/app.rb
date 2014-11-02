@@ -11,6 +11,7 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/' do
+    "Hello World!"
     # erb :index, locals: {ideas: IdeaStore.all.sort}
   end
 

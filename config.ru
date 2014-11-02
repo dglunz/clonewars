@@ -5,4 +5,4 @@ Bundler.require
 
 require 'app'
 
-run IdeaBoxApp
+run TwoFistedApp

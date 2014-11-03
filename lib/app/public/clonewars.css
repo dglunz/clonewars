@@ -1,13 +1,111 @@
+html, body {
+    padding: 0;
+    margin: 0.07em 0;
+}
+
+@font-face {
+    font-family: Adventure;
+    src: local('Adventure');
+    url("fonts/Adventure.otf") format('opentype');
+}
+
 body {
-  width: 100%;
-  background-color: black;
-  color: white;
+    width: 100%;
+    background: #000;
+    font-family: Adventure, Impact, Charcoal, Helvetica, sans-serif;
+    color: #fef500;
 }
 
-.header-logo {
-  text-align: center;
+div.center {
+    width: 685px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.homepage-links {
-  text-align: center;
+div.header {
+    width: 100%;
+    text-align: right;
+    padding: 1em 2em 0 0;
+}
+
+div.content {
+    height: 527px;
+}
+
+a {
+    color: #fef500;
+    text-decoration: none;
+    text-shadow: -3px 3px 2px rgba(246, 0, 39, 1);
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    display: block;
+    list-style-type: none;
+    padding: 0.5em 0;
+    margin: 0;
+    text-align: left;
+}
+
+.nav ul  {
+    width: 95%;
+    padding: 1em;
+    margin: 5px;
+}
+
+.nav ul li {
+    list-style-type: none;
+    float: left;
+    width: 17%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 2em;
+    text-align: center;
+    position: relative;
+    top: 10%;
+    transform: translateY(-10%);
+}
+
+.nav ul li.icon {
+    float: left;
+    width: 11%;
+    position: relative;
+    top: 30%;
+    transform: translateY(-30%);
+}
+
+.nav a {
+    color: #f60026;
+    text-decoration: none;
+    text-shadow: none;
+}
+
+.nav a:hover, a:focus {
+    color: #fef500;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+p {
+  font-size: 1.5em;
+}
+
+.giant {
+    font-size: 4.5em;
+}
+
+.tiny {
+    font-size: 0.6em;
+}
+
+.red {
+    color: #f60026;
 }

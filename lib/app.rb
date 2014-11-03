@@ -2,8 +2,6 @@ class TwoFistedApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
 
-  set :public_folder, 'public'
-
   configure :development do
     register Sinatra::Reloader
   end

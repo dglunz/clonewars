@@ -1,7 +1,9 @@
 require 'sinatra'
 require 'sinatra/sequel'
 
-migration "create the pages table" do
+migration "create all the tables" do
+  database = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://development.db')
+
   database.create_table :pages do
     primary_key :id
     String      :page,    :size => 31
@@ -48,5 +50,5 @@ migration "create the pages table" do
 
   pages.insert(page: 'why',
                header: 'because.<h1>pizza, beer &amp; rock n’ roll.</h1>',
-               content: 'what else is there really?')                 
+               content: 'what else is there really?')
 end

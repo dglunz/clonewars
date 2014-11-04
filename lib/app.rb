@@ -12,7 +12,12 @@ class TwoFistedApp < Sinatra::Base
 
   configure :development do
     register Sinatra::Reloader
-    set :database, Sequel.sqlite('development.db')
+    # set :database, Sequel.sqlite('development.db')
+  end
+
+  configure :production do
+    # figure out pg
+    # set :database, Sequel.postgres('production.db')
   end
 
   not_found do

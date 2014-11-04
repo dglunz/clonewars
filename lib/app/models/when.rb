@@ -2,7 +2,7 @@ class When
   def self.all
     {
       'header' => "every friggin' day of the week...",
-      'schedule' => {
+      'content' => {
         'monday' => '10am - 2am',
         'tuesday' => '10am - 2am',
         'wednesday' => '10am - 2am',

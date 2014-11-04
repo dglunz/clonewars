@@ -4,6 +4,7 @@ require_relative './app/models/when'
 require_relative './app/models/where'
 require_relative './app/models/why'
 require_relative './app/models/who'
+require_relative './database'
 
 class TwoFistedApp < Sinatra::Base
   set :method_override, true
@@ -11,6 +12,12 @@ class TwoFistedApp < Sinatra::Base
 
   configure :development do
     register Sinatra::Reloader
+    # set :database, Sequel.sqlite('development.db')
+  end
+
+  configure :production do
+    # figure out pg
+    # set :database, Sequel.postgres('production.db')
   end
 
   not_found do
@@ -22,7 +29,7 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/phone' do
-    @phone = Phone.all
+    @phone = settings.database[:pages].filter(:page => 'phone').first
     erb :phone
   end
 
@@ -32,22 +39,23 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/when' do
-    @when = When.all
+    @when  = settings.database[:pages].filter(:page => 'when').first
+    @hours = settings.database[:hours].to_a
     erb :when
   end
 
   get '/where' do
-    @where = Where.all
+    @where = settings.database[:pages].filter(:page => 'where').first
     erb :where
   end
 
   get '/why' do
-    @why = Why.all
+    @why = settings.database[:pages].filter(:page => 'why').first
     erb :why
   end
 
   get '/who' do
-    @who = Who.all
+    @who = settings.database[:pages].filter(:page => 'who').first
     erb :who
   end
 

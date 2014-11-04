@@ -36,21 +36,22 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/' do
+    @home = settings.database[:pages].filter(:page => 'home').first
     erb :home
   end
 
   get '/phone' do
-    @phone = Phone.all
+    @phone = settings.database[:pages].filter(:page => 'phone').first
     erb :phone
   end
 
   get '/what' do
-    @what = What.all
+    @what = settings.database[:pages].filter(:page => 'what').first
     erb :what
   end
 
   get '/when' do
-    @when = When.all
+    @when = settings.database[:pages].filter(:page => 'when').first
     erb :when
   end
 

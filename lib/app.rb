@@ -11,7 +11,7 @@ class TwoFistedApp < Sinatra::Base
   end
 
   def authenticate!(user_type)
-    return if who_is_allowed?(user_type)
+    return true if who_is_allowed?(user_type)
     headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
     halt 401, "Not authorized\n" and return false;
   end

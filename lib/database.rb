@@ -1,6 +1,11 @@
 require 'sinatra'
 require 'sinatra/sequel'
 
+
+def self.all
+
+end
+
 migration "create the pages table" do
   database.create_table :pages do
     primary_key :id

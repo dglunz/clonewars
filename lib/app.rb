@@ -1,10 +1,3 @@
-require_relative './app/models/phone'
-require_relative './app/models/what'
-require_relative './app/models/when'
-require_relative './app/models/where'
-require_relative './app/models/why'
-require_relative './app/models/who'
-
 class TwoFistedApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
@@ -27,6 +20,19 @@ class TwoFistedApp < Sinatra::Base
 
   not_found do
     erb :error
+  end
+
+  def authenticate!(user_type)
+    return true if who_is_allowed?(user_type)
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n" and return false;
+  end
+
+  #default pword is password ;-)
+  def who_is_allowed?(type_of_user, password="password")
+    @auth ||= Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? && @auth.basic? &&
+    @auth.credentials && @auth.credentials == [type_of_user, password]
   end
 
   get '/' do
@@ -64,14 +70,17 @@ class TwoFistedApp < Sinatra::Base
   end
 
   # admin paths
+  get '/admin/:path' do
+    pass unless authenticate!("admin")
+  end
 
   get '/admin' do
     protected!
     erb :admin_index,       :layout => :admin_layout
   end
 
-  get '/admin/telephone' do
-    erb :admin_telephone,   :layout => :admin_layout
+  get '/admin/phone' do
+    erb :admin_phone,   :layout => :admin_layout
   end
 
   get '/admin/what' do

@@ -1,9 +1,9 @@
 <%= erb :header %>
-<h1>every friggin' day of the week...</h1>
+<h1><%= @when['header'] %></h1>
 
 <div>
   <ul>
-    <% @schedule.each do |day, hours| %>
+    <% @when['schedule'].each do |day, hours| %>
       <li>
         <%= day.capitalize %>: <%= hours %>
         <!-- <span class="red">*</span> -->

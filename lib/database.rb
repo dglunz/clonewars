@@ -2,15 +2,15 @@ require 'sinatra'
 require 'sinatra/sequel'
 
 migration "create all the tables" do
-  database = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://development.db')
+  database.drop_table? :pages
 
   database.create_table :pages do
     primary_key :id
     String      :page,      :size => 31
-    String      :headline,  :size => 255, :default => ''
-    String      :giant,     :size => 255, :default => ''
-    String      :bodytext,  :size => 255, :default => ''
-    String      :note,      :size => 255, :default => ''
+    String      :headline,  :size => 1023, :default => ''
+    String      :giant,     :size => 1023, :default => ''
+    String      :bodytext,  :size => 1023, :default => ''
+    String      :note,      :size => 1023, :default => ''
 
   end
 

@@ -6,7 +6,7 @@ gem 'sequel'
 gem 'sinatra-sequel'
 gem 'sqlite3', :group => 'development'
 
-# gem 'pg', :group => 'production'
+gem 'pg', :group => 'production'
 
 
 gem 'pry'

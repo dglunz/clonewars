@@ -78,27 +78,57 @@ class TwoFistedApp < Sinatra::Base
     erb :admin_index,       :layout => :admin_layout
   end
 
-  get '/admin/phone' do
+  get '/admin_phone' do
     erb :admin_phone,       :layout => :admin_layout
   end
 
-  get '/admin/what' do
+  get '/admin_what' do
     erb :admin_what,        :layout => :admin_layout
   end
 
-  get '/admin/when' do
+  get '/admin_when' do
     erb :admin_when,        :layout => :admin_layout
   end
 
-  get '/admin/where' do
+  get '/admin_where' do
     erb :admin_where,       :layout => :admin_layout
   end
 
-  get '/admin/why' do
+  get '/admin_why' do
     erb :admin_why,         :layout => :admin_layout
   end
 
-  get '/admin/who' do
+  get '/admin_who' do
+    erb :admin_who,         :layout => :admin_layout
+  end
+
+  post '/admin' do
+
+    # Get params to return the appropriate stuffs
+    #
+  end
+
+  post '/admin_phone' do
+    erb :admin_phone,       :layout => :admin_layout
+  end
+
+  post '/admin_what' do
+    erb :admin_what,        :layout => :admin_layout
+  end
+
+  post '/admin_when' do
+    erb :admin_when,        :layout => :admin_layout
+  end
+
+  post '/admin_where' do
+    erb :admin_where,       :layout => :admin_layout
+  end
+
+  post '/admin_why' do
+    erb :admin_why,         :layout => :admin_layout
+  end
+
+  post '/admin_who' do
     erb :admin_who,         :layout => :admin_layout
   end
 end

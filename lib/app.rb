@@ -69,4 +69,34 @@ class TwoFistedApp < Sinatra::Base
     '
     erb :who
   end
+
+  # admin paths
+
+  get '/admin' do
+    erb :admin_index,       :layout => :admin_layout
+  end
+
+  get '/admin/telephone' do
+    erb :admin_telephone,   :layout => :admin_layout
+  end
+
+  get '/admin/what' do
+    erb :admin_what,        :layout => :admin_layout
+  end
+
+  get '/admin/when' do
+    erb :admin_when,        :layout => :admin_layout
+  end
+
+  get '/admin/where' do
+    erb :admin_where,       :layout => :admin_layout
+  end
+
+  get '/admin/why' do
+    erb :admin_why,         :layout => :admin_layout
+  end
+
+  get '/admin/who' do
+    erb :admin_who,         :layout => :admin_layout
+  end
 end

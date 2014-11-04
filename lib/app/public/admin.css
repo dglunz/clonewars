@@ -93,3 +93,17 @@ h1 {
 .red {
     color: #f60026;
 }
+
+.textarea {
+  width: 475px;
+  height: 100px;
+  resize: none;
+}
+
+.textline {
+  width: 300px;
+}
+
+.textline2 {
+  width: 100px;
+}

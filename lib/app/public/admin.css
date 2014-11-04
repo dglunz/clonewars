@@ -1,0 +1,72 @@
+html, body {
+    padding: 0;
+    margin: 0.07em 0;
+}
+
+@font-face {
+    font-family: Adventure;
+    src: local('Adventure');
+    url("fonts/Adventure.otf") format('opentype');
+}
+
+body {
+    width: 100%;
+    background: #000;
+    font-family: Adventure, Impact, Charcoal, Helvetica, sans-serif;
+    color: #fef500;
+}
+
+div.center {
+    width: 685px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.admin_header {
+    width: 100%;
+    text-align: left;
+    padding: 1em 2em 0 0;
+}
+
+a {
+    color: #fef500;
+    text-decoration: none;
+    text-shadow: -3px 3px 2px rgba(246, 0, 39, 1);
+}
+
+.admin_nav ul  {
+    width: 95%;
+    padding: 1em;
+    margin: 5px;
+}
+
+.admin_nav ul li {
+    list-style-type: none;
+    width: 17%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 2em;
+    text-align: center;
+    position: relative;
+    top: 10%;
+    transform: translateY(-10%);
+}
+
+.admin_nav ul li.icon {
+    width: 11%;
+    position: relative;
+    top: 30%;
+    transform: translateY(-30%);
+}
+
+.admin_nav a {
+    color: #f60026;
+    text-decoration: none;
+    text-shadow: none;
+}
+
+.adminnav a:hover, a:focus {
+    color: #fef500;
+}

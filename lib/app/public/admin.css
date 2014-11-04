@@ -8,6 +8,7 @@ body {
     width: 100%;
     background: #707070;
     font-family: Helvetica, sans-serif;
+    font-size: 1em;
     color: #000;
 }
 
@@ -39,6 +40,12 @@ div.template {
     width: 72%;
     float: right;
     padding: 1em;
+}
+
+div.item_box {
+    background: #c0c0c0;
+    width; 68%;
+    padding: 5px 15px;
 }
 
 a {
@@ -77,4 +84,12 @@ a {
 h1 {
   font-size: 1em;
   text-transform: uppercase;
+}
+
+.fineprint {
+    font-size: 0.8em;
+}
+
+.red {
+    color: #f60026;
 }

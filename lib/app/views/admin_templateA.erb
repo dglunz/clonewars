@@ -4,18 +4,19 @@
     <form action='/' method='POST' enctype='multipart/form-data'>
       <h1>Navigation</h1>
       <p>Page Title: <input type='text' name=''/></p>
-      <p>Icon image:<br />
+      <p><input type='checkbox' name=''><span class="fineprint">Use an icon in the menu instead of text</span></p>
+      <p>Icon image: <span class="fineprint"><strong>Max size 67px x 67px</strong></span><br />
       <input type='file' name=''/></p>
-      <p>Active icon image: <em>for rollovers and active page</em><br />
+      <p>Hover/Active icon image: <span class="fineprint"><strong>Max size 67px x 67px</strong></span><br />
       <input type='file' name=''/></p>
       <hr />
       <h1>Page Content:</h1>
       <p>Headline: <input type='text' name=''></p>
       <p>Body Text:<br />
         <textarea name=''></textarea></p>
-      <p>Image: <em>Max size 685px wide x 587px high</em><br />
+      <p>Image: <span class="fineprint"><strong>Max size 685px wide x 587px high</strong></span><br />
       <input type='file' name='' /></p>
-      <p>Note: <input type='text' name=''></p>
+      <p>Note: <input type='checkbox' name=''><span class="red">*</span> <input type='text' name=''></p>
       <input type='submit' value="Submit"/>
     </form>
 </div>

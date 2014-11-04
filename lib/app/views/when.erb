@@ -1,11 +1,11 @@
 <%= erb :header %>
-<h1><%= @when[:header] %></h1>
+<h1><%= @when['header'] %></h1>
 
 <div>
   <ul>
-    <% @hours.each do |day| %>
+    <% @when['schedule'].each do |day, hours| %>
       <li>
-        <%= day[:day].capitalize %>: <%= day[:open] %> - <%= day[:close] %>
+        <%= day.capitalize %>: <%= hours %>
         <!-- <span class="red">*</span> -->
       </li>
     <% end %>

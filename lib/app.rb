@@ -4,11 +4,22 @@ require_relative './app/models/when'
 require_relative './app/models/where'
 require_relative './app/models/why'
 require_relative './app/models/who'
-require_relative './database'
 
 class TwoFistedApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
+
+  def protected!
+    return if authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n"
+  end
+
+  def authorized?
+    @auth ||= Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? && @auth.basic? &&
+    @auth.credentials && @auth.credentials == ['admin', 'admin']
+  end
 
   configure :development do
     register Sinatra::Reloader
@@ -29,7 +40,7 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/phone' do
-    @phone = settings.database[:pages].filter(:page => 'phone').first
+    @phone = Phone.all
     erb :phone
   end
 
@@ -39,8 +50,7 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/when' do
-    @when  = settings.database[:pages].filter(:page => 'when').first
-    @hours = settings.database[:hours].to_a
+    @when = When.all
     erb :when
   end
 
@@ -62,6 +72,7 @@ class TwoFistedApp < Sinatra::Base
   # admin paths
 
   get '/admin' do
+    protected!
     erb :admin_index,       :layout => :admin_layout
   end
 

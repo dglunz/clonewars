@@ -1,15 +1,6 @@
-require_relative './app/models/phone'
-require_relative './app/models/what'
-require_relative './app/models/when'
-require_relative './app/models/where'
-require_relative './app/models/why'
-require_relative './app/models/who'
-require_relative './database'
-
 class TwoFistedApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
-  set :database, Sequel.sqlite('development.db')
 
   configure :development do
     register Sinatra::Reloader
@@ -19,12 +10,25 @@ class TwoFistedApp < Sinatra::Base
     erb :error
   end
 
+  def authenticate!(user_type)
+    return if who_is_allowed?(user_type)
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n" and return false;
+  end
+
+  #default pword is password ;-)
+  def who_is_allowed?(type_of_user, password="password")
+    @auth ||= Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? && @auth.basic? &&
+    @auth.credentials && @auth.credentials == [type_of_user, password]
+  end
+
   get '/' do
     erb :home
   end
 
   get '/phone' do
-    @phone = settings.database[:pages].filter(:page => 'phone').first
+    @phone = Phone.all
     erb :phone
   end
 
@@ -34,8 +38,7 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/when' do
-    @when  = settings.database[:pages].filter(:page => 'when').first
-    @hours = settings.database[:hours].to_a
+    @when = When.all
     erb :when
   end
 
@@ -55,13 +58,16 @@ class TwoFistedApp < Sinatra::Base
   end
 
   # admin paths
+  get '/admin/:path' do
+    pass unless authenticate!("admin")
+  end
 
   get '/admin' do
     erb :admin_index,       :layout => :admin_layout
   end
 
-  get '/admin/telephone' do
-    erb :admin_telephone,   :layout => :admin_layout
+  get '/admin/phone' do
+    erb :admin_phone,   :layout => :admin_layout
   end
 
   get '/admin/what' do

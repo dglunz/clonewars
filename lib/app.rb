@@ -9,10 +9,10 @@ require_relative './database'
 class TwoFistedApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
-  set :database, Sequel.sqlite('development.db')
 
   configure :development do
     register Sinatra::Reloader
+    set :database, Sequel.sqlite('development.db')
   end
 
   not_found do
@@ -40,17 +40,17 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/where' do
-    @where = Where.all
+    @where = settings.database[:pages].filter(:page => 'where').first
     erb :where
   end
 
   get '/why' do
-    @why = Why.all
+    @why = settings.database[:pages].filter(:page => 'why').first
     erb :why
   end
 
   get '/who' do
-    @who = Who.all
+    @who = settings.database[:pages].filter(:page => 'who').first
     erb :who
   end
 

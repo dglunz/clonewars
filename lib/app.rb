@@ -4,10 +4,12 @@ require_relative './app/models/when'
 require_relative './app/models/where'
 require_relative './app/models/why'
 require_relative './app/models/who'
+require_relative './database'
 
 class TwoFistedApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
+  set :database, Sequel.sqlite('development.db')
 
   configure :development do
     register Sinatra::Reloader
@@ -22,7 +24,7 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/phone' do
-    @phone = Phone.all
+    @phone = settings.database[:pages].filter(:page => 'phone').first
     erb :phone
   end
 
@@ -32,7 +34,8 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/when' do
-    @when = When.all
+    @when  = settings.database[:pages].filter(:page => 'when').first
+    @hours = settings.database[:hours].to_a
     erb :when
   end
 

@@ -5,6 +5,4 @@ Bundler.require
 
 require 'app'
 
-# Sequel.connect(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
-
 run TwoFistedApp

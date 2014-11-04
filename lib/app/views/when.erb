@@ -3,13 +3,12 @@
 
 <div>
   <ul>
-    <li>Monday: 10am - 2am</li>
-    <li>Tuesday: 10am - 2am</li>
-    <li>Wednesday: 10am - 2am</li>
-    <li>Thursday: 10am - 3am <span class="red">*</span></li>
-    <li>Friday: 10am - 3am <span class="red">*</span></li>
-    <li>Saturday: 10am - 3am <span class="red">*</span></li>
-    <li>Sunday: 10am - 2am</li>
+    <% @schedule.each do |day, hours| %>
+      <li>
+        <%= day.capitalize %>: <%= hours %>
+        <!-- <span class="red">*</span> -->
+      </li>
+    <% end %>
   </ul>
 </div>
     <p><span class="red">*</span> <span class="tiny">or as late as it takes the crowd to thin...</span></p>

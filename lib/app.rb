@@ -11,20 +11,7 @@ class TwoFistedApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
 
-  def protected!
-    return if authorized?
-    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
-    halt 401, "Not authorized\n"
-  end
-
-  def authorized?
-    @auth ||= Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? && @auth.basic? &&
-    @auth.credentials && @auth.credentials == ['admin', 'admin']
-  end
-
   configure :development do
-    # register Sinatra::Reloader
     set :database, Sequel.sqlite('development.db')
   end
 
@@ -129,5 +116,17 @@ class TwoFistedApp < Sinatra::Base
 
   post '/admin_who' do
     erb :admin_who,         :layout => :admin_layout
+  end
+
+  def protected!
+    return if authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n"
+  end
+
+  def authorized?
+    @auth ||= Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? && @auth.basic? &&
+    @auth.credentials && @auth.credentials == ['admin', 'admin']
   end
 end

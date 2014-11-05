@@ -1,9 +1,10 @@
 require_relative "./feature_test_helper"
 
 class AdminEditsPages < FeatureTest
+
   def test_phone_page_headline
     visit '/phone'
-    assert page.has_content?("For a good time:")
+    assert page.has_content?('For a good time:')
 
     visit '/admin_phone'
     fill_in('headline', with: 'Call me maybe?')
@@ -15,7 +16,7 @@ class AdminEditsPages < FeatureTest
 
   def test_phone_page_giant_text
     visit '/phone'
-    assert page.has_content?("303-623-3523")
+    assert page.has_content?('303-623-3523')
 
     visit '/admin_phone'
     fill_in('giant', with: '1-800-555-5555')
@@ -27,10 +28,36 @@ class AdminEditsPages < FeatureTest
 
   def test_empty_content_creates_an_empty_cell
     visit '/admin_when'
-    fill_in('heading', with: '')
+    fill_in('headline', with: '')
     click_button('Submit')
 
     visit '/when'
     assert_equal '', find(:css, 'h1').text
+    refute page.has_content?('day of the week')
+  end
+
+  def test_extra_content_does_not_break_or_show
+    visit '/admin_where'
+    fill_in('headline', with: '1600 Pennsylvania Avenue NW')
+    fill_in('giant', with: 'I CANT BELIEVE ITS NOT BUTTER')
+    click_button('Submit')
+
+    visit '/where'
+    assert page.has_content?('Pennsylvania')
+    refute page.has_content?('BUTTER')
+  end
+
+  def test_why_page_note
+    visit '/why'
+    assert page.has_content?('what else is there really?')
+
+    visit '/admin_why'
+    fill_in('headline', with: 'for the lolz')
+    fill_in('note', with: 'a lot more little notes')
+    click_button('Submit')
+
+    visit '/why'
+    assert page.has_content?('a lot more little notes')
+    refute page.has_content?('what else is there really?')
   end
 end

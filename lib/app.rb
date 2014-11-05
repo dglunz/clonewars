@@ -29,8 +29,7 @@ class TwoFistedApp < Sinatra::Base
   end
 
   configure :production do
-    # figure out pg
-    # set :database, Sequel.postgres('production.db')
+    set :database, Sequel.postgres('production.db')
   end
 
   not_found do

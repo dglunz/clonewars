@@ -53,7 +53,7 @@ a {
     text-decoration: none;
 }
 
-.admin_nav ul  {
+.admin_nav ul {
     width: 17%;
     background: #909090;
     padding: 1em;
@@ -77,7 +77,7 @@ a {
     text-decoration: none;
 }
 
-.admin_nav a:hover, a:focus {
+.admin_nav a:hover {
     color: #fff;
 }
 
@@ -101,9 +101,9 @@ h1 {
 }
 
 .textline {
-  width: 300px;
+  width: 250px;
 }
 
 .textline2 {
-  width: 100px;
+  width: 50px;
 }

@@ -63,8 +63,8 @@ class TwoFistedApp < Sinatra::Base
   # admin paths
 
   get '/admin' do
-    # @cms_path = "/admin"
-    # @content  = settings.database[:pages].where(page: 'who').first
+    @cms_path = "/admin"
+    @content  = settings.database[:pages].where(page: 'admin').first
     erb :admin_index,       :layout => :admin_layout
   end
 

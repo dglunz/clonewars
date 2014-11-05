@@ -8,13 +8,10 @@ Capybara.app = TwoFistedApp
 class FeatureTest < Minitest::Test
   include Capybara::DSL
 
-  def setup
-    # File.delete(File.expand_path("../../test.db"))
-  end
-
   def teardown
     Capybara.reset_sessions!
     Capybara.use_default_driver
+    File.delete(File.expand_path('~/Documents/Turing/projects/clonewars/test.db'))
   end
 end
 

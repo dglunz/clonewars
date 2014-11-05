@@ -4,15 +4,16 @@ html, body {
 }
 
 @font-face {
-    font-family: Adventure;
-    src: local('Adventure');
-    url("fonts/Adventure.otf") format('opentype');
+    font-family: adventure-webfont;
+    src: url('/fonts/adventure-webfont.ttf') format('truetype'),
+    font-weight: normal;
+    font-style: normal;
 }
 
 body {
     width: 100%;
     background: #000;
-    font-family: Adventure, Impact, Charcoal, Helvetica, sans-serif;
+    font-family: adventure-webfont, Impact, Charcoal, sans-serif;
     color: #fef500;
 }
 
@@ -110,9 +111,44 @@ p {
     color: #f60026;
 }
 
+.white {
+    color: #fff;
+}
+
+.yellow {
+    color: #fef500;
+}
+
+p.col1 {
+    font-family: Helvetica, sans-serif;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+p.col2 {
+    font-family: Helvetica, sans-serif;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    color: #fef500;
+}
+
+p.col3 {
+    font-family: Helvetica, sans-serif;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
 div.column1 {
-    width: 200px;
+    width: 195px;
     height: 50px;
+    padding: 0 5px;
+    float: left;
+}
+
+div.colhead1 {
+    padding: 0 0 5px 0;
     /* Rotate div */
     -ms-transform: rotate(-5deg); /* IE 9 */
     -webkit-transform: rotate(-5deg); /* Chrome, Safari, Opera */
@@ -121,33 +157,48 @@ div.column1 {
     font-family: Georgia, serif;
     font-size: 2.5em;
     font-weight: bold;
-    float: left;
 }
 
 div.column2 {
-    width: 200px;
+    width: 165px;
     height: 50px;
+    padding: 0 5px;
+    float: left;
+}
+
+div.colhead2 {
+    padding: 0 0 9px 0;
     /* Rotate div */
     -ms-transform: rotate(5deg); /* IE 9 */
     -webkit-transform: rotate(5deg); /* Chrome, Safari, Opera */
     transform: rotate(5deg);
     color: #fff;
     font-family: Georgia, serif;
-    font-size: 2em;
+    font-size: 1.9em;
     font-weight: bold;
-    float: left;
 }
 
 div.column3 {
-    width: 270px;
+    width: 295px;
     height: 50px;
-    /* Rotate div */
-    -ms-transform: rotate(-5deg); /* IE 9 */
-    -webkit-transform: rotate(-5deg); /* Chrome, Safari, Opera */
-    transform: rotate(-5deg);
-    color: #fff;
-    font-family: Georgia, serif;
-    font-size: 2em;
-    font-weight: bold;
+    padding: 0 5px;
     float: right;
+}
+
+div.colhead3 {
+  padding: 0 0 5px 0;
+  /* Rotate div */
+  -ms-transform: rotate(-5deg); /* IE 9 */
+  -webkit-transform: rotate(-5deg); /* Chrome, Safari, Opera */
+  transform: rotate(-5deg);
+  color: #fff;
+  font-family: Georgia, serif;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+div.menulink {
+    height: 450px;
+    margin-top: 425px;
+    text-align: center;
 }

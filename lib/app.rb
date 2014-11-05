@@ -63,51 +63,44 @@ class TwoFistedApp < Sinatra::Base
   # admin paths
 
   get '/admin' do
-    @cms_path = "/admin"
-    @bodytext = settings.database[:pages].where(page: 'admin').first[:bodytext]
-    @headline = settings.database[:pages].where(page: 'admin').first[:headline]
+    # @cms_path = "/admin"
+    # @content  = settings.database[:pages].where(page: 'who').first
     erb :admin_index,       :layout => :admin_layout
   end
 
   get '/admin_phone' do
     @cms_path = "/admin_phone"
-    @bodytext = settings.database[:pages].where(page: 'phone').first[:bodytext]
-    @headline = settings.database[:pages].where(page: 'phone').first[:headline]
+    @content  = settings.database[:pages].where(page: 'phone').first
     erb :admin_phone,       :layout => :admin_layout
   end
 
   get '/admin_what' do
     @cms_path = "/admin_what"
-    @bodytext = settings.database[:pages].where(page: 'what').first[:bodytext]
-    @headline = settings.database[:pages].where(page: 'what').first[:headline]
+    @content  = settings.database[:pages].where(page: 'what').first
     erb :admin_what,        :layout => :admin_layout
   end
 
   get '/admin_when' do
     @cms_path = "/admin_when"
-    @bodytext = settings.database[:pages].where(page: 'when').first[:bodytext]
-    @headline = settings.database[:pages].where(page: 'when').first[:headline]
+    @content  = settings.database[:pages].where(page: 'when').first
     erb :admin_when,        :layout => :admin_layout
   end
 
   get '/admin_where' do
     @cms_path = "/admin_where"
-    @bodytext = settings.database[:pages].where(page: 'where').first[:bodytext]
-    @headline = settings.database[:pages].where(page: 'where').first[:headline]
+    @content  = settings.database[:pages].where(page: 'where').first
     erb :admin_where,       :layout => :admin_layout
   end
 
   get '/admin_why' do
     @cms_path = "/admin_why"
-    @bodytext = settings.database[:pages].where(page: 'why').first[:bodytext]
-    @headline = settings.database[:pages].where(page: 'why').first[:headline]
-    erb :admin_why,         :layout => :admin_layoutx
+    @content  = settings.database[:pages].where(page: 'why').first
+    erb :admin_why,         :layout => :admin_layout
   end
 
   get '/admin_who' do
     @cms_path = "/admin_who"
-    @bodytext = settings.database[:pages].where(page: 'who').first[:bodytext]
-    @headline = settings.database[:pages].where(page: 'who').first[:headline]
+    @content  = settings.database[:pages].where(page: 'who').first
     erb :admin_who,         :layout => :admin_layout
   end
 

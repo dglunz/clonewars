@@ -1,12 +1,12 @@
 <div class="container">
   <div class="template">
-    <form action='<%= admin_path %>' method='POST' enctype='multipart/form-data'>
+    <form action='<%= @cms_path %>' method='POST' enctype='multipart/form-data'>
       <h1>Page Content:</h1>
       <div class="item_box">
-      <p>Headline: <input type='text' name='headline'><%= @headline %></p>
-      <p>Giant text: <input type='text' name='giant'></p>
+      <p>Headline: <input type='text' name='headline' value="<%= @content[:headline] %>"></p>
+      <p>Giant text: <input type='text' name='giant' value="<%= content[:giant] %>"></p>
       <p>Body Text:<br />
-        <textarea name='bodytext'><%= @bodytext %></textarea></p>
+        <textarea class="textarea" name='bodytext'><%= @content[:bodytext] %></textarea></p>
       <p>Image: <span class="fineprint"><strong>Max size 685px wide x 587px high</strong></span><br />
       <input type='file' name='note' /></p>
       <p>Note: <input type='checkbox' name='note'><span class="red">*</span> <input type='text' name=''></p>

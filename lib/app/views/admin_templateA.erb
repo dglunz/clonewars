@@ -1,15 +1,17 @@
 <div class="container">
   <div class="template">
-  <!-- <form> TemplateA </form> -->
     <form action='<%= admin_path %>' method='POST' enctype='multipart/form-data'>
       <h1>Page Content:</h1>
+      <div class="item_box">
       <p>Headline: <input type='text' name='headline'><%= @headline %></p>
+      <p>Giant text: <input type='text' name='giant'></p>
       <p>Body Text:<br />
         <textarea name='bodytext'><%= @bodytext %></textarea></p>
       <p>Image: <span class="fineprint"><strong>Max size 685px wide x 587px high</strong></span><br />
       <input type='file' name='note' /></p>
       <p>Note: <input type='checkbox' name='note'><span class="red">*</span> <input type='text' name=''></p>
-      <input type='submit' value="Submit"/>
+    </div>
+      <p><input type='submit' value="Submit"/></p>
     </form>
 </div>
 </div>

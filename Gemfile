@@ -8,5 +8,10 @@ gem 'sqlite3', :group => 'development'
 
 gem 'pg', :group => 'production'
 
-
-gem 'pry'
+group :test do
+  gem 'minitest'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'launchy'
+  gem 'pry'
+end

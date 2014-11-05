@@ -11,34 +11,16 @@ class TwoFistedApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
 
-  def protected!
-    return if authorized?
-    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
-    halt 401, "Not authorized\n"
-  end
-
-  def authorized?
-    @auth ||= Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? && @auth.basic? &&
-    @auth.credentials && @auth.credentials == ['admin', 'admin']
-  end
-
-  def update_database(params, page)
-    [:headline, :giant, :bodytext, :note].each do |key|
-      unless params[key].empty? || params[key] == nil
-        settings.database[:pages].where(page: page).update(key => params[key])
-      end
-    end
-
-  end
-
   configure :development do
-    register Sinatra::Reloader
     set :database, Sequel.sqlite('development.db')
   end
 
   configure :production do
-    set :database, Sequel.postgres('production.db')
+    set :database, Sequel.connect(ENV['DATABASE_URL'])
+  end
+
+  configure :test do
+    set :database, Sequel.sqlite('test.db')
   end
 
   not_found do
@@ -46,7 +28,6 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/' do
-    @home = settings.database[:pages].filter(:page => 'home').first
     erb :home
   end
 
@@ -159,5 +140,25 @@ class TwoFistedApp < Sinatra::Base
   post '/admin_who' do
     update_database(params, "who")
     redirect '/admin_when'
+  end
+
+  def update_database(params, page)
+    [:headline, :giant, :bodytext, :note].each do |key|
+      unless params[key].empty? || params[key] == nil
+        settings.database[:pages].where(page: page).update(key => params[key])
+      end
+    end
+  end
+
+  def protected!
+    return if authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n"
+  end
+
+  def authorized?
+    @auth ||= Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? && @auth.basic? &&
+    @auth.credentials && @auth.credentials == ['admin', 'admin']
   end
 end

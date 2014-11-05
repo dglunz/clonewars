@@ -23,6 +23,15 @@ class TwoFistedApp < Sinatra::Base
     @auth.credentials && @auth.credentials == ['admin', 'admin']
   end
 
+  def update_database(params, page)
+    [:headline, :giant, :bodytext, :note].each do |key|
+      unless params[key].empty? || params[key] == nil
+        settings.database[:pages].where(page: page).update(key => params[key])
+      end
+    end
+
+  end
+
   configure :development do
     register Sinatra::Reloader
     set :database, Sequel.sqlite('development.db')
@@ -74,57 +83,81 @@ class TwoFistedApp < Sinatra::Base
   # admin paths
 
   get '/admin' do
+    @cms_path = "/admin"
+    @bodytext = settings.database[:pages].where(page: 'admin').first[:bodytext]
+    @headline = settings.database[:pages].where(page: 'admin').first[:headline]
     erb :admin_index,       :layout => :admin_layout
   end
 
   get '/admin_phone' do
+    @cms_path = "/admin_phone"
+    @bodytext = settings.database[:pages].where(page: 'phone').first[:bodytext]
+    @headline = settings.database[:pages].where(page: 'phone').first[:headline]
     erb :admin_phone,       :layout => :admin_layout
   end
 
   get '/admin_what' do
+    @cms_path = "/admin_what"
+    @bodytext = settings.database[:pages].where(page: 'what').first[:bodytext]
+    @headline = settings.database[:pages].where(page: 'what').first[:headline]
     erb :admin_what,        :layout => :admin_layout
   end
 
   get '/admin_when' do
+    @cms_path = "/admin_when"
+    @bodytext = settings.database[:pages].where(page: 'when').first[:bodytext]
+    @headline = settings.database[:pages].where(page: 'when').first[:headline]
     erb :admin_when,        :layout => :admin_layout
   end
 
   get '/admin_where' do
+    @cms_path = "/admin_where"
+    @bodytext = settings.database[:pages].where(page: 'where').first[:bodytext]
+    @headline = settings.database[:pages].where(page: 'where').first[:headline]
     erb :admin_where,       :layout => :admin_layout
   end
 
   get '/admin_why' do
-    erb :admin_why,         :layout => :admin_layout
+    @cms_path = "/admin_why"
+    @bodytext = settings.database[:pages].where(page: 'why').first[:bodytext]
+    @headline = settings.database[:pages].where(page: 'why').first[:headline]
+    erb :admin_why,         :layout => :admin_layoutx
   end
 
   get '/admin_who' do
+    @cms_path = "/admin_who"
+    @bodytext = settings.database[:pages].where(page: 'who').first[:bodytext]
+    @headline = settings.database[:pages].where(page: 'who').first[:headline]
     erb :admin_who,         :layout => :admin_layout
   end
 
   post '/admin_phone' do
-    erb :admin_phone,       :layout => :admin_layout
+    update_database(params, "phone")
+    redirect '/admin_phone'
   end
 
   post '/admin_what' do
-    erb :admin_what,        :layout => :admin_layout
+    update_database(params, "what")
+    redirect '/admin_what'
   end
 
   post '/admin_when' do
-    unless params[:headline] == settings.database[:pages].select(:headline).first[:headline]
-      settings.database[:pages].where(:page => 'when').update(:headline => params[:headline])
-      redirect '/admin_when'
-    end
+    update_database(params, "when")
+    redirect '/admin_when'
   end
 
   post '/admin_where' do
-    erb :admin_where,       :layout => :admin_layout
+    update_database(params, "where")
+    redirect '/admin_where'
   end
 
   post '/admin_why' do
-    erb :admin_why,         :layout => :admin_layout
+    update_database(params, "why")
+    redirect '/admin_why'
   end
 
   post '/admin_who' do
-    erb :admin_who,         :layout => :admin_layout
+    update_database(params, "who")
+    redirect '/admin_when'
   end
 end

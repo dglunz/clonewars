@@ -60,4 +60,18 @@ class AdminEditsPages < FeatureTest
     assert page.has_content?('a lot more little notes')
     refute page.has_content?('what else is there really?')
   end
+
+  def test_who_page
+    visit '/who'
+    assert page.has_content?('potato cannons')
+
+    visit '/admin_who'
+    fill_in('headline', with: 'ketchup')
+    fill_in('bodytext', with: 'mustard')
+    click_button('Submit')
+
+    visit '/who'
+    assert page.has_content?('mustard')
+    refute page.has_content?('potato')
+  end
 end

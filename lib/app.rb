@@ -29,7 +29,7 @@ class TwoFistedApp < Sinatra::Base
   end
 
   configure :production do
-    set :database, Sequel.postgres('production.db')
+    set :database, Sequel.connect(ENV['DATABASE_URL'])
   end
 
   not_found do

@@ -5,6 +5,7 @@ require_relative './app/models/where'
 require_relative './app/models/why'
 require_relative './app/models/who'
 require_relative './database'
+require 'pry'
 
 class TwoFistedApp < Sinatra::Base
   set :method_override, true
@@ -74,7 +75,6 @@ class TwoFistedApp < Sinatra::Base
   # admin paths
 
   get '/admin' do
-    protected!
     erb :admin_index,       :layout => :admin_layout
   end
 
@@ -102,12 +102,6 @@ class TwoFistedApp < Sinatra::Base
     erb :admin_who,         :layout => :admin_layout
   end
 
-  post '/admin' do
-
-    # Get params to return the appropriate stuffs
-    #
-  end
-
   post '/admin_phone' do
     erb :admin_phone,       :layout => :admin_layout
   end
@@ -117,7 +111,10 @@ class TwoFistedApp < Sinatra::Base
   end
 
   post '/admin_when' do
-    erb :admin_when,        :layout => :admin_layout
+    unless params[:headline] == settings.database[:pages].select(:headline).first[:headline]
+      settings.database[:pages].where(:page => 'when').update(:headline => params[:headline])
+      redirect '/admin_when'
+    end
   end
 
   post '/admin_where' do

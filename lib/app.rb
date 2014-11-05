@@ -24,12 +24,16 @@ class TwoFistedApp < Sinatra::Base
   end
 
   configure :development do
-    register Sinatra::Reloader
+    # register Sinatra::Reloader
     set :database, Sequel.sqlite('development.db')
   end
 
   configure :production do
     set :database, Sequel.connect(ENV['DATABASE_URL'])
+  end
+
+  configure :test do
+    set :database, Sequel.sqlite('test.db')
   end
 
   not_found do

@@ -37,7 +37,6 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/' do
-    @home = settings.database[:pages].filter(:page => 'home').first
     erb :home
   end
 

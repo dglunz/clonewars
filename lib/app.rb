@@ -5,7 +5,6 @@ require_relative './app/models/where'
 require_relative './app/models/why'
 require_relative './app/models/who'
 require_relative './database'
-require 'pry'
 
 class TwoFistedApp < Sinatra::Base
   set :method_override, true

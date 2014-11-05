@@ -136,9 +136,7 @@ class TwoFistedApp < Sinatra::Base
 
   def update_database(params, page)
     [:headline, :giant, :bodytext, :note].each do |key|
-      unless params[key] 
-        settings.database[:pages].where(page: page).update(key => params[key])
-      end
+      settings.database[:pages].where(page: page).update(key => params[key])
     end
   end
 

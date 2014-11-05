@@ -15,6 +15,7 @@ migration "create all the tables" do
   end
 
   pages = database.from(:pages)
+  pages.insert(page: 'admin')
   pages.insert(page: 'phone',
                headline: 'For a good time:',
                giant: '303-623-3523')

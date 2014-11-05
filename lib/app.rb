@@ -70,31 +70,31 @@ class TwoFistedApp < Sinatra::Base
 
   get '/admin_phone' do
     @cms_path = "/admin_phone"
-    @content  = settings.database[:pages].where(page: 'who').first
+    @content  = settings.database[:pages].where(page: 'phone').first
     erb :admin_phone,       :layout => :admin_layout
   end
 
   get '/admin_what' do
     @cms_path = "/admin_what"
-    @content  = settings.database[:pages].where(page: 'who').first
+    @content  = settings.database[:pages].where(page: 'what').first
     erb :admin_what,        :layout => :admin_layout
   end
 
   get '/admin_when' do
     @cms_path = "/admin_when"
-    @content  = settings.database[:pages].where(page: 'who').first
+    @content  = settings.database[:pages].where(page: 'when').first
     erb :admin_when,        :layout => :admin_layout
   end
 
   get '/admin_where' do
     @cms_path = "/admin_where"
-    @content  = settings.database[:pages].where(page: 'who').first
+    @content  = settings.database[:pages].where(page: 'where').first
     erb :admin_where,       :layout => :admin_layout
   end
 
   get '/admin_why' do
     @cms_path = "/admin_why"
-    @content  = settings.database[:pages].where(page: 'who').first
+    @content  = settings.database[:pages].where(page: 'why').first
     erb :admin_why,         :layout => :admin_layout
   end
 

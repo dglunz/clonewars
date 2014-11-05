@@ -1,7 +1,23 @@
 require 'sinatra'
 require 'sinatra/sequel'
 
-migration "create all the tables" do
+migration "create the menu table" do
+  database.drop_table? :menu
+
+  database.create_table :menu do
+    primary_key :id
+    String      :item,      :size => 1023, :default => ''
+    String      :subitem,   :size => 1023, :default => ''
+    String      :price,     :size => 1023, :default => ''
+    String      :subprice,  :size => 1023, :default => ''
+    String      :textbox,   :size => 1023, :default => ''
+  end
+
+  menu = database.from(:menu)
+
+end
+
+migration "create the pages table" do
   database.drop_table? :pages
 
   database.create_table :pages do
@@ -11,7 +27,6 @@ migration "create all the tables" do
     String      :giant,     :size => 1023, :default => ''
     String      :bodytext,  :size => 1023, :default => ''
     String      :note,      :size => 1023, :default => ''
-
   end
 
   pages = database.from(:pages)

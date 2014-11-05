@@ -63,15 +63,17 @@ class TwoFistedApp < Sinatra::Base
   # admin paths
 
   get '/admin' do
-    @cms_path = "/admin"
-    @bodytext = settings.database[:pages].where(page: 'admin').first[:bodytext]
-    @headline = settings.database[:pages].where(page: 'admin').first[:headline]
+    # @cms_path = "/admin"
+    # @bodytext = settings.database[:pages].where(page: 'admin').first[:bodytext]
+    # @giant    = settings.database[:pages].where(page: 'admin').first[:giant]
+    # @headline = settings.database[:pages].where(page: 'admin').first[:headline]
     erb :admin_index,       :layout => :admin_layout
   end
 
   get '/admin_phone' do
     @cms_path = "/admin_phone"
     @bodytext = settings.database[:pages].where(page: 'phone').first[:bodytext]
+    @giant    = settings.database[:pages].where(page: 'phone').first[:giant]
     @headline = settings.database[:pages].where(page: 'phone').first[:headline]
     erb :admin_phone,       :layout => :admin_layout
   end
@@ -79,6 +81,7 @@ class TwoFistedApp < Sinatra::Base
   get '/admin_what' do
     @cms_path = "/admin_what"
     @bodytext = settings.database[:pages].where(page: 'what').first[:bodytext]
+    @giant    = settings.database[:pages].where(page: 'what').first[:giant]
     @headline = settings.database[:pages].where(page: 'what').first[:headline]
     erb :admin_what,        :layout => :admin_layout
   end
@@ -86,6 +89,7 @@ class TwoFistedApp < Sinatra::Base
   get '/admin_when' do
     @cms_path = "/admin_when"
     @bodytext = settings.database[:pages].where(page: 'when').first[:bodytext]
+    @giant    = settings.database[:pages].where(page: 'when').first[:giant]
     @headline = settings.database[:pages].where(page: 'when').first[:headline]
     erb :admin_when,        :layout => :admin_layout
   end
@@ -93,6 +97,7 @@ class TwoFistedApp < Sinatra::Base
   get '/admin_where' do
     @cms_path = "/admin_where"
     @bodytext = settings.database[:pages].where(page: 'where').first[:bodytext]
+    @giant    = settings.database[:pages].where(page: 'where').first[:giant]
     @headline = settings.database[:pages].where(page: 'where').first[:headline]
     erb :admin_where,       :layout => :admin_layout
   end
@@ -100,13 +105,15 @@ class TwoFistedApp < Sinatra::Base
   get '/admin_why' do
     @cms_path = "/admin_why"
     @bodytext = settings.database[:pages].where(page: 'why').first[:bodytext]
+    @giant    = settings.database[:pages].where(page: 'why').first[:giant]
     @headline = settings.database[:pages].where(page: 'why').first[:headline]
-    erb :admin_why,         :layout => :admin_layoutx
+    erb :admin_why,         :layout => :admin_layout
   end
 
   get '/admin_who' do
     @cms_path = "/admin_who"
     @bodytext = settings.database[:pages].where(page: 'who').first[:bodytext]
+    @giant    = settings.database[:pages].where(page: 'who').first[:giant]
     @headline = settings.database[:pages].where(page: 'who').first[:headline]
     erb :admin_who,         :layout => :admin_layout
   end

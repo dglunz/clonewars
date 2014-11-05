@@ -5,30 +5,22 @@ require_relative './app/models/where'
 require_relative './app/models/why'
 require_relative './app/models/who'
 require_relative './database'
+require 'pry'
 
 class TwoFistedApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
 
-  def protected!
-    return if authorized?
-    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
-    halt 401, "Not authorized\n"
-  end
-
-  def authorized?
-    @auth ||= Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? && @auth.basic? &&
-    @auth.credentials && @auth.credentials == ['admin', 'admin']
-  end
-
   configure :development do
-    register Sinatra::Reloader
     set :database, Sequel.sqlite('development.db')
   end
 
   configure :production do
-    set :database, Sequel.postgres('production.db')
+    set :database, Sequel.connect(ENV['DATABASE_URL'])
+  end
+
+  configure :test do
+    set :database, Sequel.sqlite('test.db')
   end
 
   not_found do
@@ -36,7 +28,6 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/' do
-    @home = settings.database[:pages].filter(:page => 'home').first
     erb :home
   end
 
@@ -73,7 +64,6 @@ class TwoFistedApp < Sinatra::Base
   # admin paths
 
   get '/admin' do
-    protected!
     erb :admin_index,       :layout => :admin_layout
   end
 
@@ -101,12 +91,6 @@ class TwoFistedApp < Sinatra::Base
     erb :admin_who,         :layout => :admin_layout
   end
 
-  post '/admin' do
-
-    # Get params to return the appropriate stuffs
-    #
-  end
-
   post '/admin_phone' do
     erb :admin_phone,       :layout => :admin_layout
   end
@@ -116,7 +100,10 @@ class TwoFistedApp < Sinatra::Base
   end
 
   post '/admin_when' do
-    erb :admin_when,        :layout => :admin_layout
+    unless params[:headline] == settings.database[:pages].select(:headline).first[:headline]
+      settings.database[:pages].where(:page => 'when').update(:headline => params[:headline])
+      redirect '/admin_when'
+    end
   end
 
   post '/admin_where' do
@@ -129,5 +116,17 @@ class TwoFistedApp < Sinatra::Base
 
   post '/admin_who' do
     erb :admin_who,         :layout => :admin_layout
+  end
+
+  def protected!
+    return if authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n"
+  end
+
+  def authorized?
+    @auth ||= Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? && @auth.basic? &&
+    @auth.credentials && @auth.credentials == ['admin', 'admin']
   end
 end

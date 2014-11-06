@@ -70,22 +70,22 @@ end
 menu = database.from(:menu)
 menu.insert(item: 'SLICE',
              price: '2.50:',
-             subitem: 'Toppings'
+             subitem: 'Toppings',
              subprice: '0.50'
              )
 menu.insert(item: 'MEDIUM[14in]',
              price: '11.50:',
-             subitem: 'Toppings'
+             subitem: 'Toppings',
              subprice: '1.50'
              )
 menu.insert(item: 'LARGE[16in]',
              price: '13.50:',
-             subitem: 'Toppings'
+             subitem: 'Toppings',
              subprice: '2.00'
              )
 menu.insert(item: 'RABBIT FOOD',
              price: '13.50:',
-             subitem: 'Toppings'
+             subitem: 'Toppings',
              subprice: '2.00'
              )
 menu.insert(textbox: "Supreme Leader Special<br />[L, Sl Only] Market Price"

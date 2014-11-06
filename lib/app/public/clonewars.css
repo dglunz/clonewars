@@ -122,8 +122,8 @@ p {
 p.col1 {
     font-family: Helvetica, sans-serif;
     font-size: 0.8em;
-    text-transform: uppercase;
     color: #fff;
+    margin-bottom: -10px;
 }
 
 p.col2 {
@@ -136,8 +136,15 @@ p.col2 {
 p.col3 {
     font-family: Helvetica, sans-serif;
     font-size: 0.7em;
-    text-transform: uppercase;
     color: #fff;
+}
+
+div.col1a {
+    float: left;
+}
+
+div.col1b {
+    float: right;
 }
 
 div.column1 {

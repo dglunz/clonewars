@@ -10,6 +10,8 @@ class TwoFistedApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
 
+  @stolen_params ||= nil
+
   configure :development do
     set :database, Sequel.sqlite('development.db')
   end
@@ -37,6 +39,7 @@ class TwoFistedApp < Sinatra::Base
 
   get '/what' do
     @what = settings.database[:menu].to_a
+    @menu = @what.reduce({}) { |carry, object| carry[object[:id].to_s] = object; carry }
     erb :what
   end
 
@@ -76,7 +79,6 @@ class TwoFistedApp < Sinatra::Base
 
   get '/admin_what' do
     @cms_path =   "/admin_what"
-    @menu     =   params[:menu]
     erb :admin_what,        :layout => :admin_layout
   end
 
@@ -110,8 +112,9 @@ class TwoFistedApp < Sinatra::Base
   end
 
   post '/admin_what' do
-    require 'pry'; binding.pry
-    update_menu(params, "what")
+    params[:menu].keys.each do |id|
+      update_menu(params, id)
+    end
     redirect '/admin_what'
   end
 
@@ -131,13 +134,8 @@ class TwoFistedApp < Sinatra::Base
   end
 
   post '/admin_who' do
-<<<<<<< HEAD
     update_pages(params, "who")
     redirect '/admin_when'
-=======
-    update_database(params, "who")
-    redirect '/admin_who'
->>>>>>> 9ee9a9caaf751d9340539ae957010f417603742c
   end
 
   def update_pages(params, page)
@@ -148,7 +146,7 @@ class TwoFistedApp < Sinatra::Base
 
   def update_menu(params, id)
     [:item, :subitem, :price, :subprice, :textbox].each do |key|
-      settings.database[:menu].where(id: id).update(key => params[key])
+      settings.database[:menu].where(id: id.to_i).update(key => params[:menu][id][key])
     end
   end
 

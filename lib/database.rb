@@ -34,8 +34,7 @@ migration "create the menu table" do
                subitem: 'Toppings',
                subprice: '2.00'
                )
-  menu.insert(textbox: "Supreme Leader Special<br />[L, Sl Only] Market Price"
-               )
+  menu.insert(textbox: "Supreme Leader Special<br />[L, Sl Only] Market Price")
   menu.insert(textbox: "pepperoni<br />
                         meatballs<br />
                         italian sausage<br />

@@ -2,61 +2,61 @@
 <div class="column1">
   <div class="colhead1">gimme a</div>
   <div class="col1a">
-  <p class="col1">@menu["1"][:item]</p>
-  <p class="col1"><span class="yellow">id1:subitem</span></p>
+  <p class="col1"><%= @what[0][:item] %></p>
+  <p class="col1"><span class="yellow"><%= @what[1][:subitem] %></span></p>
   <br />
-  <p class="col1">id2:item</p>
-  <p class="col1"><span class="yellow">id2:subitem</span></p>
+  <p class="col1"><%= @what[1][:item] %></p>
+  <p class="col1"><span class="yellow"><%= @what[2][:subitem] %></span></p>
   <br />
-  <p class="col1">id3:item</p>
-  <p class="col1"><span class="yellow">id3:subitem</span></p>
+  <p class="col1"><%= @what[2][:item] %></p>
+  <p class="col1"><span class="yellow"><%= @what[3][:subitem] %></span></p>
   <br />
-  <p class="col1">id4:item</p>
-  <p class="col1"><span class="yellow">id4:subitem</span></p>
+  <p class="col1"><%= @what[3][:item] %></p>
+  <p class="col1"><span class="yellow"><%= @what[4][:subitem] %></span></p>
   </div>
   <div class="col1b">
-  <p class="col1">id1:price</p>
-  <p class="col1">id1:subprice</p>
+  <p class="col1"><%= @what[0][:price] %></p>
+  <p class="col1"><%= @what[0][:subprice] %></p>
   <br />
-  <p class="col1">id2:price</p>
-  <p class="col1">id2:subprice</p>
+  <p class="col1"><%= @what[1][:price] %></p>
+  <p class="col1"><%= @what[1][:subprice] %></p>
   <br />
-  <p class="col1">id3:price</p>
-  <p class="col1">id3:subprice</p>
+  <p class="col1"><%= @what[2][:price] %></p>
+  <p class="col1"><%= @what[2][:subprice] %></p>
   <br />
-  <p class="col1">id4:price</p>
-  <p class="col1">id5:subprice</p>
+  <p class="col1"><%= @what[3][:price] %></p>
+  <p class="col1"><%= @what[3][:subprice] %></p>
   </div>
   <div style="clear:both"></div>
   <br />
-  <p class="col1">id5:textbox</p>
+  <p class="col1"><%= @what[4][:textbox] %></p>
 </div>
 <div class="column2">
   <div class="colhead2">with some</div>
-  <p class="col2">id6:textbox</p>
+  <p class="col2"><%= @what[5][:textbox] %></p>
 </div>
 <div class="column3">
   <div class="colhead3">how 'bout yer</div>
   <p class="col3">
-    MENU ITEM<br/ >
-    PRICE<br />
-    <span class="yellow">Description of all the ingredients.</span></p>
+    <%= @what[6][:item] %><br/ >
+    <%= @what[6][:price] %><br />
+    <span class="yellow"><%= @what[6][:textbox] %></span></p>
   <p class="col3">
-    MENU ITEM<br/ >
-    PRICE<br />
-    <span class="yellow">Description of all the ingredients.</span></p>
+    <%= @what[7][:item] %><br/ >
+    <%= @what[7][:price] %><br />
+    <span class="yellow"><%= @what[7][:textbox] %></span></p>
   <p class="col3">
-    MENU ITEM<br/ >
-    PRICE<br />
-    <span class="yellow">Description of all the ingredients.</span></p>
+    <%= @what[8][:item] %><br/ >
+    <%= @what[8][:price] %><br />
+    <span class="yellow"><%= @what[8][:textbox] %></span></p>
   <p class="col3">
-    MENU ITEM<br/ >
-    PRICE<br />
-    <span class="yellow">Description of all the ingredients.</span></p>
+    <%= @what[9][:item] %><br/ >
+    <%= @what[9][:price] %><br />
+    <span class="yellow"><%= @what[9][:textbox] %></span></p>
   <p class="col3">
-    MENU ITEM<br/ >
-    PRICE<br />
-    <span class="yellow">Description of all the ingredients.</span></p>
+    <%= @what[10][:item] %><br/ >
+    <%= @what[10][:price] %><br />
+    <span class="yellow"><%= @what[10][:textbox] %></span></p>
 
 </div>
 

@@ -1,9 +1,3 @@
-require_relative './app/models/phone'
-require_relative './app/models/what'
-require_relative './app/models/when'
-require_relative './app/models/where'
-require_relative './app/models/why'
-require_relative './app/models/who'
 require_relative './database'
 
 class TwoFistedApp < Sinatra::Base
@@ -58,6 +52,14 @@ class TwoFistedApp < Sinatra::Base
   get '/who' do
     @who = settings.database[:pages].filter(:page => 'who').first
     erb :who
+  end
+
+  post '/phone' do
+    Pony.mail(:to => params['email'],
+              :from => 'twofisted@pizza.com',
+              :subject => "New Message From: #{params['name']}",
+              :body => params['body'])
+    redirect '/phone'
   end
 
   # admin paths

@@ -14,7 +14,71 @@ migration "create the menu table" do
   end
 
   menu = database.from(:menu)
-
+  menu.insert(item: 'SLICE',
+               price: '2.50:',
+               subitem: 'Toppings',
+               subprice: '0.50'
+               )
+  menu.insert(item: 'MEDIUM[14in]',
+               price: '11.50:',
+               subitem: 'Toppings',
+               subprice: '1.50'
+               )
+  menu.insert(item: 'LARGE[16in]',
+               price: '13.50:',
+               subitem: 'Toppings',
+               subprice: '2.00'
+               )
+  menu.insert(item: 'RABBIT FOOD',
+               price: '13.50:',
+               subitem: 'Toppings',
+               subprice: '2.00'
+               )
+  menu.insert(textbox: "Supreme Leader Special<br />[L, Sl Only] Market Price"
+               )
+  menu.insert(textbox: "pepperoni<br />
+                        meatballs<br />
+                        italian sausage<br />
+                        anchovies<br />
+                        canadian ham<br />
+                        bacon<br />
+                        <br />
+                        onions<br />
+                        mushrooms<br />
+                        green peppers<br />
+                        green olives<br />
+                        black olives<br />
+                        spinach<br />
+                        tomatoes<br />
+                        jalapenos<br />
+                        pineapple<br />
+                        transylvanian garlic<br />
+                        ricotta<br />
+                        extra cheese<br />
+                        <br />
+                        ranch dressing<br />
+                        creamy italian<br />"
+               )
+  menu.insert(item: "MARIO/'S SPECIAL",
+               price: '[Sl] 3.50 [M] 17.00 [L] 19.00',
+               textbox: 'Pepperoni, Italian Sausage, Meatballs, Green Peppers, Onions, Mushrooms, Black & Green Olives, Extra Cheese.'
+               )
+  menu.insert(item: "GRANDAD GUCCIO/'S VEGETARIAN SPECIAL",
+               price: '[Sl] 3.25 [M] 16.00 [L] 18.00',
+               textbox: 'Green Peppers, Onions, Black & Green Olives, Mushrooms, Transylvanian Fresh Garlic, Extra Cheese.'
+               )
+  menu.insert(item: "SHROOM N/' SPINNN",
+               price: '[Sl] 3.25 [M] 16.00 [L] 18.00',
+               textbox: 'Mushrooms, Spinach, Transylvanian Fresh Garlic, Extra Cheese.'
+               )
+  menu.insert(item: "WHITE PIZZA",
+               price: '[M] 15.00 [L] 17.00',
+               textbox: 'Mozzarella, Ricotta, Transylvanian Fresh Garlic, Oregano, Black Pepper.'
+               )
+  menu.insert(item: "RABBIT FOOD",
+               price: '[Bowl] 4.00 ',
+               textbox: 'Romaine, Iceberg, Green Peppers, Black and Green Olives, Onions, Mushrooms, Cheese, Tomatoes.'
+               )
 end
 
 migration "create the pages table" do
@@ -65,73 +129,4 @@ migration "create the pages table" do
   pages.insert(page: 'why',
                headline: 'because. <br />pizza, beer &amp; rock n’ roll.',
                note: 'what else is there really?')
-end
-
-menu = database.from(:menu)
-menu.insert(item: 'SLICE',
-             price: '2.50:',
-             subitem: 'Toppings',
-             subprice: '0.50'
-             )
-menu.insert(item: 'MEDIUM[14in]',
-             price: '11.50:',
-             subitem: 'Toppings',
-             subprice: '1.50'
-             )
-menu.insert(item: 'LARGE[16in]',
-             price: '13.50:',
-             subitem: 'Toppings',
-             subprice: '2.00'
-             )
-menu.insert(item: 'RABBIT FOOD',
-             price: '13.50:',
-             subitem: 'Toppings',
-             subprice: '2.00'
-             )
-menu.insert(textbox: "Supreme Leader Special<br />[L, Sl Only] Market Price"
-             )
-menu.insert(textbox: "pepperoni<br />
-                      meatballs<br />
-                      italian sausage<br />
-                      anchovies<br />
-                      canadian ham<br />
-                      bacon<br />
-                      <br />
-                      onions<br />
-                      mushrooms<br />
-                      green peppers<br />
-                      green olives<br />
-                      black olives<br />
-                      spinach<br />
-                      tomatoes<br />
-                      jalapenos<br />
-                      pineapple<br />
-                      transylvanian garlic<br />
-                      ricotta<br />
-                      extra cheese<br />
-                      <br />
-                      ranch dressing<br />
-                      creamy italian<br />"
-             )
-menu.insert(item: "MARIO/'S SPECIAL",
-             price: '[Sl] 3.50 [M] 17.00 [L] 19.00',
-             textbox: 'Pepperoni, Italian Sausage, Meatballs, Green Peppers, Onions, Mushrooms, Black & Green Olives, Extra Cheese.'
-             )
-menu.insert(item: "GRANDAD GUCCIO/'S VEGETARIAN SPECIAL",
-             price: '[Sl] 3.25 [M] 16.00 [L] 18.00',
-             textbox: 'Green Peppers, Onions, Black & Green Olives, Mushrooms, Transylvanian Fresh Garlic, Extra Cheese.'
-             )
-menu.insert(item: "SHROOM N/' SPINNN",
-             price: '[Sl] 3.25 [M] 16.00 [L] 18.00',
-             textbox: 'Mushrooms, Spinach, Transylvanian Fresh Garlic, Extra Cheese.'
-             )
-menu.insert(item: "WHITE PIZZA",
-             price: '[M] 15.00 [L] 17.00',
-             textbox: 'Mozzarella, Ricotta, Transylvanian Fresh Garlic, Oregano, Black Pepper.'
-             )
-menu.insert(item: "RABBIT FOOD",
-             price: '[Bowl] 4.00 ',
-             textbox: 'Romaine, Iceberg, Green Peppers, Black and Green Olives, Onions, Mushrooms, Cheese, Tomatoes.'
-             )
-
 end

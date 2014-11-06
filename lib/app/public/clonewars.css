@@ -53,43 +53,43 @@ ul li {
     text-align: left;
 }
 
-.nav ul  {
-    width: 95%;
-    padding: 1em;
-    margin: 5px;
-}
-
-.nav ul li {
-    list-style-type: none;
-    float: left;
-    width: 17%;
-    border: 0;
+.nav {
     padding: 0;
     margin: 0;
-    font-size: 2em;
-    text-align: center;
-    position: relative;
-    top: 10%;
-    transform: translateY(-10%);
+    list-style: none;
+    background: #000;
 }
 
-.nav ul li.icon {
+.nav li {
+    padding: 0;
+    margin: 0;
+    height: 80px;
     float: left;
-    width: 11%;
-    position: relative;
-    top: 30%;
-    transform: translateY(-30%);
+    list-style: none;
+    background-repeat: no-repeat;
 }
 
-.nav a {
-    color: #f60026;
+.nav li a, .nav li a:visited {
+    display: block;
     text-decoration: none;
-    text-shadow: none;
+    text-indent: -9999px;
+    height: 80px;
+    background-repeat: no-repeat;
 }
-
-.nav a:hover, a:focus {
-    color: #fef500;
-}
+.phone {background-image: url(images/nav_phoneA.jpg); width: 85px;}
+.phone a {background-image: url(images/nav_phone.jpg);}
+.what {background-image: url(images/nav_whatA.jpg); width: 117px;}
+.what a {background-image: url(images/nav_what.jpg);}
+.when {background-image: url(images/nav_whenA.jpg); width: 121px;}
+.when a {background-image: url(images/nav_when.jpg);}
+.where {background-image: url(images/nav_whereA.jpg); width: 136px;}
+.where a {background-image: url(images/nav_where.jpg);}
+.why {background-image: url(images/nav_whyA.jpg); width: 109px;}
+.why a {background-image: url(images/nav_why.jpg);}
+.who {background-image: url(images/nav_whoA.jpg); width: 116px;}
+.who a {background-image: url(images/nav_who.jpg);}
+ul.nav li a:hover {background: none;}
+.nav:after {content: "."; display: block; height: 0; clear: both; visibility: hidden;}
 
 h1 {
     font-size: 2em;
@@ -214,4 +214,16 @@ div.menulink {
     height: 450px;
     margin-top: 425px;
     text-align: center;
+}
+
+div.banner {
+  /* Rotate div */
+  -ms-transform: rotate(-5deg); /* IE 9 */
+  -webkit-transform: rotate(-5deg); /* Chrome, Safari, Opera */
+  transform: rotate(-5deg);
+  color: #f60026;
+  h2 {
+    padding: 10px;
+    color: #fff;
+  }
 }

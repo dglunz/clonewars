@@ -14,5 +14,7 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'launchy'
+  gem 'carrierwave'
+  gem 'carrierwave-sequel', require: 'carrierwave/sequel'
   gem 'pry'
 end

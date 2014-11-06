@@ -106,6 +106,12 @@ class TwoFistedApp < Sinatra::Base
     erb :admin_who,         :layout => :admin_layout
   end
 
+  post '/admin' do
+    image_handler
+    update_database(params, "home")
+    redirect '/admin'
+  end
+
   post '/admin_phone' do
     update_database(params, "phone")
     redirect '/admin_phone'
@@ -153,4 +159,14 @@ class TwoFistedApp < Sinatra::Base
     @auth.provided? && @auth.basic? &&
     @auth.credentials && @auth.credentials == ['admin', 'admin']
   end
+
+  def image_handler
+    if params["image"]["tempfile"]
+      ImageUploader.new.store!(params['image']['image'])
+      filename = params['image']['image'][:filename]
+      # idea_params.merge!({"image" => filename})
+      # put the image in uploads, have the db pull the image path
+    end
+  end
+
 end

@@ -10,8 +10,6 @@ class TwoFistedApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
 
-  @stolen_params ||= nil
-
   configure :development do
     set :database, Sequel.sqlite('development.db')
   end

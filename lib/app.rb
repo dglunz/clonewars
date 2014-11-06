@@ -36,7 +36,7 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/what' do
-    @what = settings.database[:pages].filter(:page => 'what').first
+    @what = settings.database[:menu].to_a
     erb :what
   end
 

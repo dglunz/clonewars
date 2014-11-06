@@ -36,7 +36,6 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/what' do
-    @what = settings.database[:menu].to_a
     @menu = @what.reduce({}) { |carry, object| carry[object[:id].to_s] = object; carry }
     erb :what
   end

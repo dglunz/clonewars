@@ -9,7 +9,7 @@
         <textarea class="textarea" name='bodytext'><%= @content[:bodytext] %></textarea></p>
       <p>Image: <span class="fineprint"><strong>Max size 685px wide x 587px high</strong></span><br />
       <input type='file' name='note' /></p>
-      <p>Note: <input type='checkbox' name=''><span class="red">*</span> <input type='text' name='note'></p>
+      <p>Note:<input type='text' name='note' value="<%= @content[:note] %>"></p>
       </div>
       <p><input type='submit' value="Submit"/></p>
     </form>

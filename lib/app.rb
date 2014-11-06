@@ -131,7 +131,7 @@ class TwoFistedApp < Sinatra::Base
 
   post '/admin_who' do
     update_database(params, "who")
-    redirect '/admin_when'
+    redirect '/admin_who'
   end
 
   def update_database(params, page)

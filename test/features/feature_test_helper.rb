@@ -24,4 +24,8 @@ class Capybara::Session
   def has_submit_button?(value)
     self.has_selector?("input[type=submit][value='#{value}']")
   end
+
+  def has_input?(value)
+    self.has_selector?("input[type=text][value='#{value}']")
+  end
 end

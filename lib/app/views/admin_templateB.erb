@@ -6,35 +6,35 @@
       <p>Column One: Menu Items &amp; Prices</p>
       <div class="item_box">
         <p>Item/Price Box</p>
-        <p>Item: <input type='text' class="textline" name='menu[1][item]'/> Price: <input type='text' class="textline2" name='menu[1][price]'/></p>
-        <p>Subitem: <input type='text' class="textline" name='menu[1][subitem]'/> Price: <input type='text' class="textline2" name='menu[1][subprice]'/></p>
+        <p>Item: <input type='text' class="textline" name='menu[1][item]' value="<%= @db[0][:item] %>"/> Price: <input type='text' class="textline2" name='menu[1][price]'/></p>
+        <p>Subitem: <input type='text' class="textline" name='menu[1][subitem]' value="<%= @db[0][:subitem] %>"/> Price: <input type='text' class="textline2" name='menu[1][subprice]'/></p>
         <p><span class="fineprint"><em>(Subitems are optional)</em></span>
       </div>
 
       <div class="item_box">
         <p>Item/Price Box</p>
-        <p>Item: <input type='text' class="textline" name='menu[2][item]'/> Price: <input type='text' class="textline2" name='menu[2][price]'/></p>
-        <p>Subitem: <input type='text' class="textline" name='menu[2][subitem]'/> Price: <input type='text' class="textline2" name='menu[2][subprice]'/></p>
+        <p>Item: <input type='text' class="textline" name='menu[2][item]'  value="<%= @db[1][:item] %>"/> Price: <input type='text' class="textline2" name='menu[2][price]'/></p>
+        <p>Subitem: <input type='text' class="textline" name='menu[2][subitem]'  value="<%= @db[1][:subitem] %>"/> Price: <input type='text' class="textline2" name='menu[2][subprice]'/></p>
         <p><span class="fineprint"><em>(Subitems are optional)</em></span>
       </div>
 
       <div class="item_box">
         <p>Item/Price Box</p>
-        <p>Item: <input type='text' class="textline" name='menu[3][item]'/> Price: <input type='text' class="textline2" name='menu[3][price]'/></p>
-        <p>Subitem: <input type='text' class="textline" name='menu[3][subitem]'/> Price: <input type='text' class="textline2" name='menu[3][subprice]'/></p>
+        <p>Item: <input type='text' class="textline" name='menu[3][item]'  value="<%= @db[2][:item] %>"/> Price: <input type='text' class="textline2" name='menu[3][price]'/></p>
+        <p>Subitem: <input type='text' class="textline" name='menu[3][subitem]'  value="<%= @db[2][:subitem] %>"/> Price: <input type='text' class="textline2" name='menu[3][subprice]'/></p>
         <p><span class="fineprint"><em>(Subitems are optional)</em></span>
       </div>
 
       <div class="item_box">
         <p>Item/Price Box</p>
-        <p>Item: <input type='text' class="textline" name='menu[4][item]'/> Price: <input type='text' class="textline2" name='menu[4][price]'/></p>
-        <p>Subitem: <input type='text' class="textline" name='menu[4][subitem]'/> Price: <input type='text' class="textline2" name='menu[4][subprice]'/></p>
+        <p>Item: <input type='text' class="textline" name='menu[4][item]'  value="<%= @db[3][:item] %>"/> Price: <input type='text' class="textline2" name='menu[4][price]'/></p>
+        <p>Subitem: <input type='text' class="textline" name='menu[4][subitem]'  value="<%= @db[3][:subitem] %>"/> Price: <input type='text' class="textline2" name='menu[4][subprice]'/></p>
         <p><span class="fineprint"><em>(Subitems are optional)</em></span>
       </div>
 
       <div class="text_box">
         <p>Text Box</p>
-        <p><input type='textarea' class="textarea" name='menu[5][textbox]'/> </p>
+        <p><input type='textarea' class="textarea" name='menu[5][textbox]' value="<%= @db[4][:textbox] %>"/> </p>
       </div>
 
 <!-- Column 2 -->
@@ -42,44 +42,44 @@
     <p>Column Two: Toppings &amp; More</p>
     <div class="text_box">
       <p>Text Box</p>
-      <p><input type='textarea' class="textarea" name='menu[6][textbox]'/> </p>
+      <p><input type='textarea' class="textarea" name='menu[6][textbox]' value="<%= @db[5][:textbox] %>"/> </p>
     </div>
 
 <!-- Column 3 -->
     <p>Column Three: Specials</p>
     <div class="item_box">
       <p>Item/Price Box</p>
-      <p>Item: <input type='text' class="textline" name='menu[7][item]'/></p>
-      <p>Price: <input type='text' class="textline" name='menu[7][price]'/></p>
-      <p>Description: <input type='textarea' class="textarea" name='menu[7][textbox]'/></p>
+      <p>Item: <input type='text' class="textline" name='menu[7][item]' value="<%= @db[6][:item] %>"/></p>
+      <p>Price: <input type='text' class="textline" name='menu[7][price]' value="<%= @db[6][:price] %>"/></p>
+      <p>Description: <input type='textarea' class="textarea" name='menu[7][textbox]' value="<%= @db[6][:textbox] %>"/></p>
     </div>
 
     <div class="item_box">
       <p>Item/Price Box</p>
-      <p>Item: <input type='text' class="textline" name='menu[8][item]'/></p>
-      <p>Price: <input type='text' class="textline" name='menu[8][price]'/></p>
-      <p>Description: <input type='textarea' class="textarea" name='menu[8][textbox]'/></p>
+      <p>Item: <input type='text' class="textline" name='menu[8][item]' value="<%= @db[7][:item] %>"/></p>
+      <p>Price: <input type='text' class="textline" name='menu[8][price]' value="<%= @db[7][:price] %>"/></p>
+      <p>Description: <input type='textarea' class="textarea" name='menu[8][textbox]' value="<%= @db[7][:textbox] %>"/></p>
     </div>
 
     <div class="item_box">
       <p>Item/Price Box</p>
-      <p>Item: <input type='text' class="textline" name='menu[9][item]'/></p>
-      <p>Price: <input type='text' class="textline" name='menu[9][price]'/></p>
-      <p>Description: <input type='textarea' class="textarea" name='menu[9][textbox]'/></p>
+      <p>Item: <input type='text' class="textline" name='menu[9][item]' value="<%= @db[8][:item] %>"/></p>
+      <p>Price: <input type='text' class="textline" name='menu[9][price]' value="<%= @db[8][:price] %>"/></p>
+      <p>Description: <input type='textarea' class="textarea" name='menu[9][textbox]' value="<%= @db[8][:textbox] %>"/></p>
     </div>
 
     <div class="item_box">
       <p>Item/Price Box</p>
-      <p>Item: <input type='text' class="textline" name='menu[10][item]'/></p>
-      <p>Price: <input type='text' class="textline" name='menu[10][price]'/></p>
-      <p>Description: <input type='textarea' class="textarea" name='menu[10][textbox]'/></p>
+      <p>Item: <input type='text' class="textline" name='menu[10][item]' value="<%= @db[9][:item] %>"/></p>
+      <p>Price: <input type='text' class="textline" name='menu[10][price]' value="<%= @db[9][:price] %>"/></p>
+      <p>Description: <input type='textarea' class="textarea" name='menu[10][textbox]' value="<%= @db[9][:textbox] %>"/></p>
     </div>
 
     <div class="item_box">
       <p>Item/Price Box</p>
-      <p>Item: <input type='text' class="textline" name='menu[11][item]'/></p>
-      <p>Price: <input type='text' class="textline" name='menu[11][price]'/></p>
-      <p>Description: <input type='textarea' class="textarea" name='menu[11][textbox]'/></p>
+      <p>Item: <input type='text' class="textline" name='menu[11][item]' value="<%= @db[10][:item] %>"/></p>
+      <p>Price: <input type='text' class="textline" name='menu[11][price]' value="<%= @db[10][:price] %>"/></p>
+      <p>Description: <input type='textarea' class="textarea" name='menu[11][textbox]' value="<%= @db[10][:textbox] %>"/></p>
     </div>
 
     <p><input type='submit' value="Submit"/></p>

@@ -79,6 +79,7 @@ class TwoFistedApp < Sinatra::Base
 
   get '/admin_what' do
     @cms_path =   "/admin_what"
+    @db = settings.database[:menu].to_a
     erb :admin_what,        :layout => :admin_layout
   end
 

@@ -16,6 +16,8 @@ GEM
     ffi (1.9.6)
     launchy (2.4.2)
       addressable (~> 2.3)
+    mail (2.6.3)
+      mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.3)
     mini_portile (0.6.0)
@@ -24,6 +26,8 @@ GEM
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     pg (0.17.1)
+    pony (1.11)
+      mail (>= 2.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -70,6 +74,7 @@ DEPENDENCIES
   launchy
   minitest
   pg
+  pony
   pry
   selenium-webdriver
   sequel

@@ -4,6 +4,7 @@ gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-contrib', require: 'sinatra/reloader'
 gem 'sequel'
 gem 'sinatra-sequel'
+gem 'pony'
 gem 'sqlite3', :group => 'development'
 
 gem 'pg', :group => 'production'

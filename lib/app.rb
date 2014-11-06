@@ -36,7 +36,7 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/what' do
-    @what = settings.database[:pages].filter(:page => 'what').first
+    @what = settings.database[:menu].to_a
     erb :what
   end
 
@@ -131,8 +131,13 @@ class TwoFistedApp < Sinatra::Base
   end
 
   post '/admin_who' do
+<<<<<<< HEAD
     update_pages(params, "who")
     redirect '/admin_when'
+=======
+    update_database(params, "who")
+    redirect '/admin_who'
+>>>>>>> 9ee9a9caaf751d9340539ae957010f417603742c
   end
 
   def update_pages(params, page)

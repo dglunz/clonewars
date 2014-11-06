@@ -7,6 +7,11 @@ Capybara.app = TwoFistedApp
 
 class FeatureTest < Minitest::Test
   include Capybara::DSL
+  include Rack::Test::Methods
+
+  def app
+    TwoFistedApp
+  end
 
   def teardown
     Capybara.reset_sessions!

@@ -4,4 +4,4 @@ A custom CMS for a prexisting site.
 
 [Original](http://www.twofistedmarios.com/Two-fisted_Marios_Pizza.html)
 
-[Cloned](http://two-fisted.herokuapp.com/)
+[Cloned](http://pizza-fisting.herokuapp.com/)

@@ -147,6 +147,12 @@ div.col1b {
     float: right;
 }
 
+div.contact {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 div.column1 {
     width: 195px;
     height: 50px;

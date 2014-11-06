@@ -69,14 +69,14 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/admin_phone' do
-    @cms_path = "/admin_phone"
-    @content  = settings.database[:pages].where(page: 'phone').first
+    @cms_path =   "/admin_phone"
+    @content  =   settings.database[:pages].where(page: 'phone').first
     erb :admin_phone,       :layout => :admin_layout
   end
 
   get '/admin_what' do
-    @cms_path = "/admin_what"
-    @content  = settings.database[:pages].where(page: 'what').first
+    @cms_path =   "/admin_what"
+    @menu     =   params[:menu]
     erb :admin_what,        :layout => :admin_layout
   end
 
@@ -105,38 +105,45 @@ class TwoFistedApp < Sinatra::Base
   end
 
   post '/admin_phone' do
-    update_database(params, "phone")
+    update_pages(params, "phone")
     redirect '/admin_phone'
   end
 
   post '/admin_what' do
-    update_database(params, "what")
+    require 'pry'; binding.pry
+    update_menu(params, "what")
     redirect '/admin_what'
   end
 
   post '/admin_when' do
-    update_database(params, "when")
+    update_pages(params, "when")
     redirect '/admin_when'
   end
 
   post '/admin_where' do
-    update_database(params, "where")
+    update_pages(params, "where")
     redirect '/admin_where'
   end
 
   post '/admin_why' do
-    update_database(params, "why")
+    update_pages(params, "why")
     redirect '/admin_why'
   end
 
   post '/admin_who' do
-    update_database(params, "who")
+    update_pages(params, "who")
     redirect '/admin_when'
   end
 
-  def update_database(params, page)
+  def update_pages(params, page)
     [:headline, :giant, :bodytext, :note].each do |key|
       settings.database[:pages].where(page: page).update(key => params[key])
+    end
+  end
+
+  def update_menu(params, id)
+    [:item, :subitem, :price, :subprice, :textbox].each do |key|
+      settings.database[:menu].where(id: id).update(key => params[key])
     end
   end
 

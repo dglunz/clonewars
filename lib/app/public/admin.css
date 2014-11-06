@@ -124,3 +124,12 @@ h1 {
 .textline2 {
   width: 50px;
 }
+
+.bannerbox {
+  width: 100%
+  height: 100px;
+  background: #fff;
+  border: 2px solid #f60026;
+  padding: 3px;
+  margin-top: 5px;
+}

@@ -217,12 +217,8 @@ div.menulink {
 }
 
 div.banner {
-  /* Rotate div */
-  -ms-transform: rotate(-5deg); /* IE 9 */
-  -webkit-transform: rotate(-5deg); /* Chrome, Safari, Opera */
-  transform: rotate(-5deg);
   color: #f60026;
-  h2 {
+  h1 {
     padding: 10px;
     color: #fff;
   }

@@ -21,6 +21,7 @@ class TwoFistedApp < Sinatra::Base
   end
 
   get '/' do
+    @content = settings.database[:pages].filter(:page => 'admin').first
     erb :home
   end
 
@@ -107,8 +108,7 @@ class TwoFistedApp < Sinatra::Base
   end
 
   post '/admin' do
-    image_handler
-    update_database(params, "home")
+    update_database(params, "admin")
     redirect '/admin'
   end
 
